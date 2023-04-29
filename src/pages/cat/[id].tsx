@@ -11,7 +11,7 @@ const CatDetail = ({cat}: {cat: CatType}) => {
 }
 
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
 
     const id = context.query.id
 
