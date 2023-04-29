@@ -29,7 +29,7 @@ function Home({test}: {test: CatType[]}) {
 }
 
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
 
 
   const cats = await fetch(`${process.env.NEXT_PUBLIC_CAT_API}/images/search?limit=20&page=0&order=ASC`, {
