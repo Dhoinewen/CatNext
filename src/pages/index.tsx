@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Link from "next/link";
+import {CatType} from "@/types/main";
 
 const inter = Inter({ subsets: ['latin'] })
 
-function Home({test}) {
+function Home({test}: {test: CatType[]}) {
 
   return (
   <div>
