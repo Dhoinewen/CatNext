@@ -19,7 +19,7 @@ export async function getServerSideProps(context: any) {
 
     const response = await fetch(`${process.env.NEXT_PUBLIC_CAT_API}/images/${id}`, {
         headers: {
-            'x-api-key': 'live_cdDyPkqKPEm7J3IiMV6e31uVHpneQOey2j6Bfw3xprkRJdzp3pMcsG1euDSVHfbb',
+            'x-api-key': process.env.NEXT_PUBLIC_API_KEY,
         }
     })
 

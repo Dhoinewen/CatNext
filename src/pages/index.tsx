@@ -8,14 +8,14 @@ const inter = Inter({ subsets: ['latin'] })
 function Home({test}: {test: CatType[]}) {
 
   return (
-  <div>
+  <div className="bg-beige">
     <h1>
       MMMMMMMMMMM
     </h1>
-    <div className="w-2/3 grid grid-cols-3 gap-4 mx-auto">
+    <div className="w-full px-4 xl:p-0 xl:w-2/3 grid grid-cols-2 xl:grid-cols-3 gap-4 mx-auto">
       {test.map((cat, index) => {
         return (
-            <div key={index}>
+            <div className="bg-vanila px-4 py-4 rounded-2xl" key={index}>
               <div>
                 <Link href={`/cat/${cat.id}`}>{cat.id}</Link>
               </div>
@@ -34,7 +34,7 @@ export async function getServerSideProps(context: any) {
 
   const cats = await fetch(`${process.env.NEXT_PUBLIC_CAT_API}/images/search?limit=20&page=0&order=ASC`, {
     headers: {
-      'x-api-key': 'live_cdDyPkqKPEm7J3IiMV6e31uVHpneQOey2j6Bfw3xprkRJdzp3pMcsG1euDSVHfbb',
+      'x-api-key': process.env.NEXT_PUBLIC_API_KEY,
     }
   })
   const test = await cats.json()
