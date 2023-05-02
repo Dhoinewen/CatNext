@@ -1,9 +1,6 @@
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import Link from "next/link";
 import {CatType} from "@/types/main";
-
-const inter = Inter({ subsets: ['latin'] })
 
 function Home({test}: {test: CatType[]}) {
 
@@ -29,7 +26,7 @@ function Home({test}: {test: CatType[]}) {
 }
 
 
-export async function getServerSideProps(context: any) {
+export async function getServerSideProps() {
 
   const cats = await fetch(`${process.env.NEXT_PUBLIC_CAT_API}/images/search?limit=20&page=0&order=ASC`, {
     headers: {
@@ -39,7 +36,7 @@ export async function getServerSideProps(context: any) {
   const test = await cats.json()
 
   return {
-    props: {test}, // will be passed to the page component as props
+    props: {test},
   }
 }
 
