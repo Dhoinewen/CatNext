@@ -31,13 +31,9 @@ function Home({test}: {test: CatType[]}) {
 
 export async function getServerSideProps(context: any) {
 
-  const api_key = process.env.NEXT_PUBLIC_KEY
-
-
-
   const cats = await fetch(`${process.env.NEXT_PUBLIC_CAT_API}/images/search?limit=20&page=0&order=ASC`, {
     headers: {
-      'x-api-key': 'live_cdDyPkqKPEm7J3IiMV6e31uVHpneQOey2j6Bfw3xprkRJdzp3pMcsG1euDSVHfbb',
+      'x-api-key': process.env.NEXT_PUBLIC_KEY ? process.env.NEXT_PUBLIC_KEY : "noKey",
     }
   })
   const test = await cats.json()
