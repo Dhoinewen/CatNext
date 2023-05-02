@@ -1,9 +1,6 @@
-import { useRouter } from 'next/router'
 import {CatType} from "@/types/main";
 
 const CatDetail = ({cat}: {cat: CatType}) => {
-
-    console.log(cat)
 
     return (
         <div> {cat.id} </div>
@@ -24,7 +21,7 @@ export async function getServerSideProps(context: any) {
     const cat = await response.json()
 
     return {
-        props: {cat}, // will be passed to the page component as props
+        props: {cat},
     }
 }
 
