@@ -10,7 +10,7 @@ function Home({test}: {test: CatType[]}) {
   return (
   <div className="bg-beige">
     <h1>
-      MMMMMMMMMMM
+      {process.env.NEXT_PUBLIC_KEY}
     </h1>
     <div className="w-full px-4 xl:p-0 xl:w-2/3 grid grid-cols-2 xl:grid-cols-3 gap-4 mx-auto">
       {test.map((cat, index) => {
@@ -32,6 +32,7 @@ function Home({test}: {test: CatType[]}) {
 export async function getServerSideProps(context: any) {
 
   const api_key = process.env.NEXT_PUBLIC_KEY
+
 
 
   const cats = await fetch(`${process.env.NEXT_PUBLIC_CAT_API}/images/search?limit=20&page=0&order=ASC`, {
