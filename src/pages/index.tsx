@@ -6,7 +6,7 @@ function Home({ test }: { test: CatType[] }) {
   return (
     <div className="bg-beige">
       <h1 className="w-full text-center">Cat Site</h1>
-      <div className="w-full px-4 xl:p-0 xl:w-2/3 grid grid-cols-2 xl:grid-cols-3 gap-4 mx-auto">
+      <div className="w-full px-4 xl:p-0 xl:w-2/3 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mx-auto">
         {test.map((cat, index) => {
           return (
             <div className="bg-vanila px-4 py-4 rounded-2xl" key={index}>
