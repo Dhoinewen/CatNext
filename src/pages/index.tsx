@@ -19,7 +19,7 @@ function Home({ test, breeds }: { test: CatType[]; breeds: Breed[] }) {
           {breeds.map((breed, index) => (
             <button
               className={clsx(
-                "py-2 px-3 rounded-xl mb-4 mr-4 border",
+                "py-2 px-3 rounded-xl mb-4 mr-4 border dark:bg-vanila",
                 breedsFilter.includes(breed.id)
                   ? "bg-vanila"
                   : "bg-beige"
