@@ -1,8 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CatType } from "@/types/main";
+import axios from "axios";
 
-function Home({ test }: { test: CatType[] }) {
+function Home({ test, breeds }: { test: CatType[], breeds: any }) {
+
+    console.log(breeds[0])
+
   return (
     <div className="bg-beige">
       <h1 className="w-full text-center">Cat Site</h1>
@@ -38,10 +42,12 @@ export async function getServerSideProps() {
       },
     }
   );
+
+  const {data: breeds} = await axios.get("https://api.thecatapi.com/v1/breeds")
   const test = await cats.json();
 
   return {
-    props: { test },
+    props: { test, breeds },
   };
 }
 
