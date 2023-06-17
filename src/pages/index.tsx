@@ -9,21 +9,23 @@ import { filterArrayControl } from "@/helpers/filterArrayControl";
 function Home({ test, breeds }: { test: CatType[]; breeds: Breed[] }) {
   const [breedsFilter, setBreedsFilter] = useState<string[]>([]);
 
-
   return (
     <div className="bg-beige">
       <h1 className="w-full text-center">Cat Site</h1>
       <div className="w-full xl:p-0 xl:w-2/3 my-4 mx-auto p-2">
-          <div className="flex flex-wrap my-4 h-12">
-              {breedsFilter.length !== 0 ? (
-                  breedsFilter.map((breed) => (
-                      <span className="py-2 px-3 rounded-xl mb-4 mr-4 border border-gray-800 text-gray-800 bg-vanila">
-                      {breed}
-                  </span>
-                  ))) : (
-                <h2>Select breed</h2>
-              )}
-          </div>
+        <div className="flex flex-wrap my-4 h-12">
+          {breedsFilter.length !== 0 ? (
+            breedsFilter.map((breed) => (
+              <span
+                  key={`select-breed-item-${breed}`}
+                  className="py-2 px-3 rounded-xl mb-4 mr-4 border border-gray-800 text-gray-800 bg-vanila">
+                {breed}
+              </span>
+            ))
+          ) : (
+            <h2>Select breed</h2>
+          )}
+        </div>
         <div className="flex flex-wrap justify-center">
           {breeds.map((breed, index) => (
             <button
