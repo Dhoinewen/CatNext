@@ -1,13 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import {Breed, CatType} from "@/types/main";
+import { Breed, CatType } from "@/types/main";
 import axios from "axios";
 
-function Home({ test, breeds }: { test: CatType[], breeds: Breed }) {
-
+function Home({ test, breeds }: { test: CatType[]; breeds: Breed[] }) {
   return (
     <div className="bg-beige">
       <h1 className="w-full text-center">Cat Site</h1>
+      <div className="w-full px-4 xl:p-0 xl:w-2/3  mx-auto">
+        {breeds.map((breed, index) => (
+          <div key={`breed-${breed.id}`}>{breed.name}</div>
+        ))}
+      </div>
       <div className="w-full px-4 xl:p-0 xl:w-2/3 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mx-auto">
         {test.map((cat, index) => {
           return (
@@ -41,7 +45,9 @@ export async function getServerSideProps() {
     }
   );
 
-  const {data: breeds} = await axios.get("https://api.thecatapi.com/v1/breeds")
+  const { data: breeds } = await axios.get(
+    "https://api.thecatapi.com/v1/breeds"
+  );
   const test = await cats.json();
 
   return {
