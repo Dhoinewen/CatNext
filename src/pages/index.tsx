@@ -9,13 +9,12 @@ import { filterArrayControl } from "@/helpers/filterArrayControl";
 function Home({ test, breeds }: { test: CatType[]; breeds: Breed[] }) {
   const [breedsFilter, setBreedsFilter] = useState<string[]>([]);
 
-  console.log(breedsFilter)
 
   return (
     <div className="bg-beige">
       <h1 className="w-full text-center">Cat Site</h1>
-      <div className="w-full xl:p-0 xl:w-2/3 my-4 mx-auto">
-        <div className="flex flex-wrap justify-items-center">
+      <div className="w-full xl:p-0 xl:w-2/3 my-4 mx-auto p-2">
+        <div className="flex flex-wrap justify-center">
           {breeds.map((breed, index) => (
             <button
               className={clsx(
