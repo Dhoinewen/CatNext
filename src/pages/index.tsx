@@ -7,27 +7,34 @@ function Home({ test, breeds }: { test: CatType[]; breeds: Breed[] }) {
   return (
     <div className="bg-beige">
       <h1 className="w-full text-center">Cat Site</h1>
-      <div className="w-full px-4 xl:p-0 xl:w-2/3  mx-auto">
-        {breeds.map((breed, index) => (
-          <div key={`breed-${breed.id}`}>{breed.name}</div>
-        ))}
-      </div>
-      <div className="w-full px-4 xl:p-0 xl:w-2/3 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mx-auto">
-        {test.map((cat, index) => {
-          return (
-            <div className="bg-vanila px-4 py-4 rounded-2xl" key={index}>
-              <div>
-                <Link href={`/cat/${cat.id}`}>{cat.id}</Link>
+      <div className="w-full xl:p-0 xl:w-2/3 my-4 mx-auto">
+        <div className="flex flex-wrap justify-items-center">
+          {breeds.map((breed, index) => (
+            <span
+              className="border border-gray-300 py-2 px-3 rounded-md mb-4 mr-4"
+              key={`breed-${breed.id}`}
+            >
+              {breed.name}
+            </span>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          {test.map((cat, index) => {
+            return (
+              <div className="bg-vanila px-4 py-4 rounded-2xl" key={index}>
+                <div>
+                  <Link href={`/cat/${cat.id}`}>{cat.id}</Link>
+                </div>
+                <Image
+                  src={cat.url}
+                  alt={cat.id}
+                  width={cat.width}
+                  height={cat.height}
+                />
               </div>
-              <Image
-                src={cat.url}
-                alt={cat.id}
-                width={cat.width}
-                height={cat.height}
-              />
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
