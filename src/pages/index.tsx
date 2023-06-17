@@ -21,8 +21,8 @@ function Home({ test, breeds }: { test: CatType[]; breeds: Breed[] }) {
               className={clsx(
                 "py-2 px-3 rounded-xl mb-4 mr-4 border border-gray-800 text-gray-800",
                 breedsFilter.includes(breed.id)
-                  ? "bg-vanila"
-                  : "bg-beige"
+                  ? "bg-vanila transition duration-100"
+                  : "bg-beige transition duration-100"
               )}
               key={`breed-${breed.id}`}
               onClick={() =>
