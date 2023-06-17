@@ -9,18 +9,20 @@ import { filterArrayControl } from "@/helpers/filterArrayControl";
 function Home({ test, breeds }: { test: CatType[]; breeds: Breed[] }) {
   const [breedsFilter, setBreedsFilter] = useState<string[]>([]);
 
+  console.log(breedsFilter)
+
   return (
     <div className="bg-beige">
       <h1 className="w-full text-center">Cat Site</h1>
       <div className="w-full xl:p-0 xl:w-2/3 my-4 mx-auto">
         <div className="flex flex-wrap justify-items-center">
           {breeds.map((breed, index) => (
-            <span
+            <button
               className={clsx(
-                "py-2 px-3 rounded-md mb-4 mr-4",
+                "py-2 px-3 rounded-xl mb-4 mr-4 border",
                 breedsFilter.includes(breed.id)
-                  ? "border-4"
-                  : "border border-gray-300"
+                  ? "bg-vanila"
+                  : "bg-beige"
               )}
               key={`breed-${breed.id}`}
               onClick={() =>
@@ -28,7 +30,7 @@ function Home({ test, breeds }: { test: CatType[]; breeds: Breed[] }) {
               }
             >
               {breed.name}
-            </span>
+            </button>
           ))}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
