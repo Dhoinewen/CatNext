@@ -1,11 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CatType } from "@/types/main";
+import {Breed, CatType} from "@/types/main";
 import axios from "axios";
 
-function Home({ test, breeds }: { test: CatType[], breeds: any }) {
-
-    console.log(breeds[0])
+function Home({ test, breeds }: { test: CatType[], breeds: Breed }) {
 
   return (
     <div className="bg-beige">

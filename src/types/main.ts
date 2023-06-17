@@ -5,7 +5,7 @@ export type CatType = {
     height: number,
 }
 
-export type breed = {
+export type Breed = {
     weight: {
         imperial: string;
         metric: string;
