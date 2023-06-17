@@ -2,8 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Breed, CatType } from "@/types/main";
 import axios from "axios";
+import clsx from "clsx";
+import { useState } from "react";
+import { filterArrayControl } from "@/helpers/filterArrayControl";
 
 function Home({ test, breeds }: { test: CatType[]; breeds: Breed[] }) {
+  const [breedsFilter, setBreedsFilter] = useState<string[]>([]);
+
   return (
     <div className="bg-beige">
       <h1 className="w-full text-center">Cat Site</h1>
@@ -11,8 +16,16 @@ function Home({ test, breeds }: { test: CatType[]; breeds: Breed[] }) {
         <div className="flex flex-wrap justify-items-center">
           {breeds.map((breed, index) => (
             <span
-              className="border border-gray-300 py-2 px-3 rounded-md mb-4 mr-4"
+              className={clsx(
+                "py-2 px-3 rounded-md mb-4 mr-4",
+                breedsFilter.includes(breed.id)
+                  ? "border-4"
+                  : "border border-gray-300"
+              )}
               key={`breed-${breed.id}`}
+              onClick={() =>
+                setBreedsFilter(filterArrayControl(breed.id, breedsFilter))
+              }
             >
               {breed.name}
             </span>
